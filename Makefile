@@ -115,6 +115,14 @@ tail:
 	@echo "🥫 Reading logs (Apache2, Nginx) …"
 	tail -f logs/**/*
 
+test_cover: step_in, cover
+
+step_in:
+	@echo "🥫 Stepping into the backend container …"
+	docker exec -it po-backend-1 bash
+cover:
+	@echo "🥫 running …"
+	perl -MDevel::Cover t/*.t
 
 #----------#
 # Services #
